@@ -1,14 +1,18 @@
 const express = require('express')
 const path = require('path')
 
+// creating an Express application
 const app = express()
 const port = 3000
 
+// tell Express to use the EJS
 app.set('view engine', 'ejs')
+// setting the directory where Express should look for my view templates
 app.set('views', path.join(__dirname, 'views'));
 
+// the middleware for the time to show the web content 
 
-const hours = (req, res, next) => {
+/*const hours = (req, res, next) => {
     const time = new Date()
     const day = time.getDay()
     const hour = time.getHours()
@@ -17,12 +21,12 @@ const hours = (req, res, next) => {
         return next()
     }
     res.send('<h1>Access denied: Available only Monday-Friday, 9 AM to 5 PM.</h1>')
-}
+}*/
 
 app.use(express.static(path.join(__dirname, 'public'))); 
-app.use(hours);
+//app.use(hours);
 
-
+// defines a route handler for the root URL
 app.get('/', (req, res)=> {
     res.render('home')
 })
@@ -40,6 +44,7 @@ app.use((err, req, res, next) => {
     res.send('something wrong')
 })
 
+// start the Express server in the ${port}
 app.listen(port, () => {
     console.log(`server is running at http://localhost:${port}`)
 })
