@@ -12,16 +12,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 // the middleware for the time to show the web content 
 
-/*const hours = (req, res, next) => {
-    const time = new Date()
-    const day = time.getDay()
-    const hour = time.getHours()
-
-    if (day >= 1 && day <= 5 && hour >= 9 && hour < 17){
-        return next()
-    }
-    res.send('<h1>Access denied: Available only Monday-Friday, 9 AM to 5 PM.</h1>')
-}*/
 
 app.use(express.static(path.join(__dirname, 'public'))); 
 //app.use(hours);
